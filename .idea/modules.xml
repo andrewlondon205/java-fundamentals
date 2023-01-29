@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/01-titleclaseconverter/01-titleclaseconverter.iml" filepath="$PROJECT_DIR$/01-titleclaseconverter/01-titleclaseconverter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/envsetup/envsetup.iml" filepath="$PROJECT_DIR$/envsetup/envsetup.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gettingstarted/gettingstarted.iml" filepath="$PROJECT_DIR$/gettingstarted/gettingstarted.iml" />
       <module fileurl="file://$PROJECT_DIR$/java-fundamentals.iml" filepath="$PROJECT_DIR$/java-fundamentals.iml" />
     </modules>
   </component>

@@ -2,7 +2,7 @@
   <artifact type="jar" build-on-make="true" name="01-titleclaseconverter:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/01_titleclaseconverter_jar</output-path>
     <root id="archive" name="01-titleclaseconverter.jar">
-      <element id="module-output" name="01-titleclaseconverter" />
+      <element id="module-output" name="envsetup" />
     </root>
   </artifact>
 </component>
