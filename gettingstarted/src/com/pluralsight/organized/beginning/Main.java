@@ -1,4 +1,4 @@
-package com.pluralsight.organized;
+package com.pluralsight.organized.beginning;
 
 public class Main {
 
