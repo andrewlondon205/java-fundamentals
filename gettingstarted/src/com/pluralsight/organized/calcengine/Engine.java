@@ -47,7 +47,20 @@ public class Engine {
         double leftVal = valueFromWord(parts[1]);
         double rightVal = valueFromWord(parts[2]);
         double result = execute(opCode,leftVal,rightVal);
-        System.out.println(result);
+        displayResult(opCode,leftVal,rightVal,result);
+    }
+
+    private static void displayResult(char opCode, double leftVal, double rightVal,  double result) {
+        char symbol = symbolFromOpCode(opCode);
+        StringBuilder builder = new StringBuilder(20);
+        builder.append(leftVal);
+        builder.append(" ");
+        builder.append(symbol);
+        builder.append(" ");
+        builder.append(rightVal);
+        builder.append(" = ");
+        builder.append(result);
+        System.out.println(builder.toString());
     }
 
     private static void handleCommandLine(String[] args) {
@@ -79,6 +92,19 @@ public class Engine {
                 result = 0.0;
         }
         return result;
+    }
+
+    public static char symbolFromOpCode (char opCode) {
+        char [] opCodes = {'a','s','m','d'};
+        char [] symbols = {'+','-','*','/'};
+        char symbol = ' ';
+        for (int index = 0; index < opCodes.length; index++) {
+            if (opCode == opCodes[index]) {
+                symbol = symbols[index];
+                break;
+            }
+        }
+        return symbol;
     }
 
     public static char opCodeFromString(String operationName) {
