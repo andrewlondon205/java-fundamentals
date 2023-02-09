@@ -52,7 +52,7 @@ public class Engine {
 
     private static void displayResult(char opCode, double leftVal, double rightVal,  double result) {
         char symbol = symbolFromOpCode(opCode);
-        StringBuilder builder = new StringBuilder(20);
+/*        StringBuilder builder = new StringBuilder(20);
         builder.append(leftVal);
         builder.append(" ");
         builder.append(symbol);
@@ -60,7 +60,10 @@ public class Engine {
         builder.append(rightVal);
         builder.append(" = ");
         builder.append(result);
-        System.out.println(builder.toString());
+        System.out.println(builder.toString());*/
+
+        String output = String.format("%.0f %c %.0f = %.0f",leftVal,symbol,rightVal,result);
+        System.out.println(output);
     }
 
     private static void handleCommandLine(String[] args) {
