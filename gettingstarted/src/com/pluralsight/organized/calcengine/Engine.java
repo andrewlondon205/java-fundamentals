@@ -1,5 +1,6 @@
 package com.pluralsight.organized.calcengine;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class Engine {
@@ -44,10 +45,25 @@ public class Engine {
 
     private static void performOperation(String[] parts) {
         char opCode = opCodeFromString(parts[0]);
-        double leftVal = valueFromWord(parts[1]);
-        double rightVal = valueFromWord(parts[2]);
-        double result = execute(opCode,leftVal,rightVal);
-        displayResult(opCode,leftVal,rightVal,result);
+
+        if(opCode == 'w')
+            handleWhen(parts);
+        else {
+            double leftVal = valueFromWord(parts[1]);
+            double rightVal = valueFromWord(parts[2]);
+            double result = execute(opCode, leftVal, rightVal);
+            displayResult(opCode, leftVal, rightVal, result);
+        }
+    }
+
+    private static void handleWhen(String[] parts) {
+
+        LocalDate startDate = LocalDate.parse(parts[1]);
+        long daysToAdd = (long) valueFromWord(parts[2]);
+        LocalDate newDate = startDate.plusDays(daysToAdd);
+        startDate.plusDays(daysToAdd);
+        String output = String.format("%s plus %d days is %s",startDate,daysToAdd,newDate);
+        System.out.println(output);
     }
 
     private static void displayResult(char opCode, double leftVal, double rightVal,  double result) {
@@ -117,13 +133,18 @@ public class Engine {
 
     public static double valueFromWord(String word) {
         String [] numberWords = { "zero","one","two","three","four","five","six","seven","eight","nine"};
-        double value = 0d;
+        double value = -1d;
         for(int index = 0; index < numberWords.length; index++) {
             if(word.equals(numberWords[index])) {
                 value = index;
                 break;
             }
         }
+
+        if(value == -1d) {
+            value = Double.parseDouble(word);
+        }
+
         return value;
     }
 
