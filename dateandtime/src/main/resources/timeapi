@@ -1,0 +1,346 @@
+Last login: Sun Feb 12 11:07:01 on ttys000
+(base) ramaialejandria@Ramais-iMac ~ % jshell
+i|  Welcome to JShell -- Version 17.0.2
+|  For an introduction type: /help intro
+m
+jshell> import java.time.*;
+
+jshell> Duration.ofSeconds(123)
+$2 ==> PT2M3S
+
+jshell> Duration d = Duration.ofSeconds(123)
+d ==> PT2M3S
+
+jshell> d
+d ==> PT2M3S
+
+jshell> Duration.ofNanos(456)
+$5 ==> PT0.000000456S
+
+jshell> Duration.ofNanos(1_000_000_000)
+$6 ==> PT1S
+
+jshell> Duration.ofSeconds(123,456)
+$7 ==> PT2M3.000000456S
+
+jshell> Duration.ofMillis(1000)
+$8 ==> PT1S
+
+jshell> Duration.ofMinutes(1000)
+$9 ==> PT16H40M
+
+jshell> Duration.ofHours(25)
+$10 ==> PT25H
+
+jshell> Duration.of(5,ChronoUnit.SECONDS)
+|  Error:
+|  cannot find symbol
+|    symbol:   variable ChronoUnit
+|  Duration.of(5,ChronoUnit.SECONDS)
+|                ^--------^
+
+jshell> Duration.of(5, ChronoUnit.SECONDS)
+|  Error:
+|  cannot find symbol
+|    symbol:   variable ChronoUnit
+|  Duration.of(5, ChronoUnit.SECONDS)
+|                 ^--------^
+
+jshell> import java.time.temporal;
+|  Error:
+|  cannot find symbol
+|    symbol:   class temporal
+|  import java.time.temporal;
+|         ^----------------^
+
+jshell> import java.time.temporal.ChronoUnit;
+
+jshell> Duration.of(2, ChronoUnit.SECONDS)
+$12 ==> PT2S
+
+jshell> Duration.of(2, ChronoUnit.HOURS)
+$13 ==> PT2H
+
+jshell> Duration.ofDays(2)
+$14 ==> PT48H
+
+jshell> Duration.ofDays(10)
+$15 ==> PT240H
+
+jshell> Duration.ofSeconds(62,1_000_012)
+$16 ==> PT1M2.001000012S
+
+jshell> $2.getSeconds()
+$17 ==> 123
+
+jshell> $2.getNano()
+$18 ==> 0
+
+jshell> $16.getNano()
+$19 ==> 1000012
+
+jshell> $2.toMillisPart()
+$20 ==> 0
+
+jshell> $2.toSecondsPart()
+$21 ==> 3
+
+jshell> $2.toMinutesPart()
+$22 ==> 2
+
+jshell> $2.toNanosPart()
+$23 ==> 0
+
+jshell> Period.ofDays(120)
+$24 ==> P120D
+
+jshell> Period.of(1,0,1)
+$25 ==> P1Y1D
+
+jshell> $25.minusMonths(4)
+$26 ==> P1Y-4M1D
+
+jshell> $4.withYears(0).withMonths(8)
+|  Error:
+|  cannot find symbol
+|    symbol:   variable $4
+|  $4.withYears(0).withMonths(8)
+|  ^^
+
+jshell> $26.withYears(0).withMonths(8)
+$27 ==> P8M1D
+
+jshell> $27.getMonths()
+$28 ==> 8
+
+jshell> LocalTime.of(
+$18   $19   $20   $21   $22   $23   $28
+
+Signatures:
+LocalTime LocalTime.of(int hour, int minute)
+LocalTime LocalTime.of(int hour, int minute, int second)
+LocalTime LocalTime.of(int hour, int minute, int second, int nanoOfSecond)
+
+<press tab again to see documentation>
+jshell> LocalTime.of(
+LocalTime LocalTime.of(int hour, int minute)
+Obtains an instance of LocalTime from an hour and minute.
+This returns a LocalTime with the specified hour and minute. The second and nanosecond fields
+will be set to zero.
+
+Parameters:
+hour - the hour-of-day to represent, from 0 to 23
+minute - the minute-of-hour to represent, from 0 to 59
+
+Returns:
+the local time, not null
+
+Thrown Exceptions:
+DateTimeException - if the value of any field is out of range
+
+<press tab to see next documentation>
+jshell> LocalTime.of(2001,1,1)
+|  Exception java.time.DateTimeException: Invalid value for HourOfDay (valid values 0 - 23): 2001
+|        at ValueRange.checkValidValue (ValueRange.java:319)
+|        at ChronoField.checkValidValue (ChronoField.java:718)
+|        at LocalTime.of (LocalTime.java:319)
+|        at (#29:1)
+
+jshell> LocalDate.of(
+$18   $19   $20   $21   $22   $23   $28
+
+Signatures:
+LocalDate LocalDate.of(int year, Month month, int dayOfMonth)
+LocalDate LocalDate.of(int year, int month, int dayOfMonth)
+
+<press tab again to see documentation>
+jshell> LocalDate.of(
+LocalDate LocalDate.of(int year, Month month, int dayOfMonth)
+Obtains an instance of LocalDate from a year, month and day.
+This returns a LocalDate with the specified year, month and day-of-month. The day must be valid
+for the year and month, otherwise an exception will be thrown.
+
+Parameters:
+year - the year to represent, from MIN_YEAR to MAX_YEAR
+month - the month-of-year to represent, not null
+dayOfMonth - the day-of-month to represent, from 1 to 31
+
+Returns:
+the local date, not null
+
+Thrown Exceptions:
+DateTimeException - if the value of any field is out of range, or if the day-of-month is
+                    invalid for the month-year
+
+<press tab to see next documentation>
+jshell> LocalDate.of(2001,1,1)
+$30 ==> 2001-01-01
+
+jshell> LocalDate.of(2001,Month.JANUARY,1)
+$31 ==> 2001-01-01
+
+jshell> LocalDate.now()
+$32 ==> 2023-02-12
+
+jshell> Clock.fixed(Instant.EPOCH,ZoneOffset.UTC)
+$33 ==> FixedClock[1970-01-01T00:00:00Z,Z]
+
+jshell> localDate.now($33)
+|  Error:
+|  cannot find symbol
+|    symbol:   variable localDate
+|  localDate.now($33)
+|  ^-------^
+
+jshell> LocalDate.now($33)
+$34 ==> 1970-01-01
+
+jshell> LocalTime.MIDNIGHT
+$35 ==> 00:00
+
+jshell> $35.plus
+plus(          plusHours(     plusMinutes(   plusNanos(     plusSeconds(
+jshell> $35.plus(Duration.ofHours(3))
+$36 ==> 03:00
+
+jshell> $35.plus(3,ChronoUnit.HOURS)
+$37 ==> 03:00
+
+jshell> $35.with
+with(         withHour(     withMinute(   withNano(     withSecond(
+jshell> $35.with(
+$29   $30   $31   $32   $34   $35   $36   $37
+
+Signatures:
+LocalTime LocalTime.with(java.time.temporal.TemporalAdjuster adjuster)
+LocalTime LocalTime.with(java.time.temporal.TemporalField field, long newValue)
+
+<press tab again to see documentation>
+jshell> $35.with(ChronoField.HOUR_OF_DAY,12)
+|  Error:
+|  cannot find symbol
+|    symbol:   variable ChronoField
+|  $35.with(ChronoField.HOUR_OF_DAY,12)
+|           ^---------^
+
+jshell> $35.with(ChronoField.HOUR_OF_DAY, 12)
+|  Error:
+|  cannot find symbol
+|    symbol:   variable ChronoField
+|  $35.with(ChronoField.HOUR_OF_DAY, 12)
+|           ^---------^
+
+jshell> LocalDate.ofEpochDay(0)
+$38 ==> 1970-01-01
+
+jshell> LocalDate.now()
+$39 ==> 2023-02-12
+
+jshell> LocalDateTime.now()
+$40 ==> 2023-02-12T12:08:50.310195
+
+jshell> $38.get(ChronoField.MONTH_OF_YEAR)
+|  Error:
+|  cannot find symbol
+|    symbol:   variable ChronoField
+|  $38.get(ChronoField.MONTH_OF_YEAR)
+|          ^---------^
+
+jshell> Month.Values()
+|  Error:
+|  cannot find symbol
+|    symbol:   method Values()
+|  Month.Values()
+|  ^----------^
+
+jshell> import java.time.temporal.*;
+
+jshell> $38.get(ChronoField.MONTH_OF_YEAR)
+$42 ==> 1
+
+jshell> Month.Values()
+|  Error:
+|  cannot find symbol
+|    symbol:   method Values()
+|  Month.Values()
+|  ^----------^
+
+jshell> import java.time.Month;
+
+jshell> Month.Values()
+|  Error:
+|  cannot find symbol
+|    symbol:   method Values()
+|  Month.Values()
+|  ^----------^
+
+jshell> Month.of()
+|  Error:
+|  method of in enum java.time.Month cannot be applied to given types;
+|    required: int
+|    found:    no arguments
+|    reason: actual and formal argument lists differ in length
+|  Month.of()
+|  ^------^
+
+jshell> Month.of(2)
+$44 ==> FEBRUARY
+
+jshell> Month
+Month      MonthDay
+
+Signatures:
+java.time.Month
+
+<press tab again to see documentation>
+jshell> Month
+java.time.Month
+A month-of-year, such as 'July'.
+ Month is an enum representing the 12 months of the year - January, February, March, April,
+May, June, July, August, September, October, November and December.
+In addition to the textual enum name, each month-of-year has an int value. The int value
+follows normal usage and the ISO-8601 standard, from 1 (January) to 12 (December). It is
+recommended that applications use the enum rather than the int value to ensure code clarity.
+ Do not use ordinal() to obtain the numeric representation of Month . Use getValue() instead.
+This enum represents a common concept that is found in many calendar systems. As such, this
+enum may be used by any calendar system that has the month-of-year concept defined exactly
+equivalent to the ISO-8601 calendar system.
+jshell> Month.
+APRIL       AUGUST      DECEMBER    EnumDesc    FEBRUARY    JANUARY     JULY        JUNE
+MARCH       MAY         NOVEMBER    OCTOBER     SEPTEMBER   class       from(       of(
+valueOf(    values()
+jshell> Month.values()
+$45 ==> Month[12] { JANUARY, FEBRUARY, MARCH, APRIL, MAY, JUNE, JULY, AUGUST, SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER }
+
+jshell> DayOfWeek.values()
+$46 ==> DayOfWeek[7] { MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY }
+
+jshell> $35.getMonth()
+|  Error:
+|  cannot find symbol
+|    symbol:   method getMonth()
+|  $35.getMonth()
+|  ^----------^
+
+jshell> $38.getMonth()
+$47 ==> JANUARY
+
+jshell> Month.of(11)
+$48 ==> NOVEMBER
+
+jshell> LocalDateTime.of(1969,7,20,20,17)
+$49 ==> 1969-07-20T20:17
+
+jshell> LocalDateTime.of(1996,4,9,23,12)
+$50 ==> 1996-04-09T23:12
+
+jshell> LocalDateTime.of(1996,9,4,23,12)
+$51 ==> 1996-09-04T23:12
+
+jshell> LocalDate.from($51)
+$52 ==> 1996-09-04
+
+jshell> LocalTime.from($51)
+$53 ==> 23:12
+
+jshell>
